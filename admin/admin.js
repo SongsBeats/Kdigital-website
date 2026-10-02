@@ -100,8 +100,12 @@
     $('app').hidden = true; $('login').hidden = false;
     var e = $('login-error');
     if (msg) { e.textContent = msg; e.hidden = false; } else { e.hidden = true; }
-    setTimeout(function () { $('password').focus(); }, 30);
+    setTimeout(function () { ($('username').value ? $('password') : $('username')).focus(); }, 30);
   }
+  function markLoginInvalid(on) {
+    ['username', 'password'].forEach(function (id) { if (on) $(id).setAttribute('aria-invalid', 'true'); else $(id).removeAttribute('aria-invalid'); });
+  }
+  ['username', 'password'].forEach(function (id) { $(id).addEventListener('input', function () { markLoginInvalid(false); }); });
   $('pw-toggle').addEventListener('click', function () {
     var p = $('password'); var show = p.type === 'password';
     p.type = show ? 'text' : 'password';
@@ -110,13 +114,24 @@
   });
   $('login-form').addEventListener('submit', function (ev) {
     ev.preventDefault();
+    var user = $('username').value.trim();
     var pw = $('password').value;
     var err = $('login-error');
-    if (!pw) { err.textContent = 'Enter the admin password.'; err.hidden = false; return; }
+    if (!user || !pw) {
+      err.textContent = !user ? 'Enter your username.' : 'Enter your password.'; err.hidden = false;
+      $(!user ? 'username' : 'password').setAttribute('aria-invalid', 'true');
+      $(!user ? 'username' : 'password').focus();
+      return;
+    }
     var btn = $('login-btn'); btn.disabled = true; btn.textContent = 'Signing in...';
-    api('login', { method: 'POST', body: { password: pw } }).then(function (r) {
+    api('login', { method: 'POST', body: { username: user, password: pw } }).then(function (r) {
       btn.disabled = false; btn.textContent = 'Sign in';
-      if (!r.ok) { err.textContent = r.data.message || 'Sign-in failed.'; err.hidden = false; $('password').select(); return; }
+      if (!r.ok) {
+        err.textContent = r.data.message || 'Sign-in failed.'; err.hidden = false;
+        if (r.status === 401) markLoginInvalid(true);
+        $('password').select(); return;
+      }
+      markLoginInvalid(false); err.hidden = true;
       $('password').value = '';
       state.csrf = r.data.csrf;
       loadContent();

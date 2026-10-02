@@ -1,8 +1,9 @@
 /**
- * Admin authentication: one password (ADMIN_PASSWORD) and a stateless signed session cookie.
+ * Admin authentication: username (ADMIN_USERNAME, default "admin") + password (ADMIN_PASSWORD) and a
+ * stateless signed session cookie.
  *   cookie  kd_admin = v1.<expires-ms>.<nonce>.<hmac>   HttpOnly; Secure; SameSite=Strict; Path=/; 8 hours
- *   hmac    HMAC-SHA256(ADMIN_SESSION_SECRET, "v1.<exp>.<nonce>.<password fingerprint>")
- * Changing ADMIN_PASSWORD or ADMIN_SESSION_SECRET signs everyone out. CSRF: every write must send the
+ *   hmac    HMAC-SHA256(ADMIN_SESSION_SECRET, "v1.<exp>.<nonce>.<username+password fingerprint>")
+ * Changing ADMIN_USERNAME, ADMIN_PASSWORD or ADMIN_SESSION_SECRET signs everyone out. CSRF: every write must send the
  * X-CSRF-Token header (HMAC of the session nonce), JSON content type and a same-origin Origin.
  */
 'use strict';
@@ -13,7 +14,8 @@ const COOKIE = 'kd_admin';
 const SESSION_MS = 8 * 60 * 60 * 1000;
 const LOGIN_LIMITS = [{ windowMs: 15 * 60 * 1000, max: 5 }, { windowMs: 24 * 60 * 60 * 1000, max: 30 }];
 const GLOBAL_LIMIT = { windowMs: 15 * 60 * 1000, max: 50 };   // all IPs together, per instance
-const MIN_PASSWORD = 10;
+const MIN_PASSWORD = 8;
+const DEFAULT_USERNAME = 'admin';
 const MIN_SECRET = 32;
 
 const b64u = (buf) => Buffer.from(buf).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
@@ -21,12 +23,13 @@ const sha256 = (s) => crypto.createHash('sha256').update(String(s), 'utf8').dige
 const hmac = (key, s) => crypto.createHmac('sha256', key).update(s, 'utf8').digest();
 
 function config() {
+  const username = String(process.env.ADMIN_USERNAME || '').trim() || DEFAULT_USERNAME;
   const password = process.env.ADMIN_PASSWORD || '';
   const secret = process.env.ADMIN_SESSION_SECRET || '';
   const problems = [];
   if (password.length < MIN_PASSWORD) problems.push(`ADMIN_PASSWORD must be set (at least ${MIN_PASSWORD} characters)`);
   if (secret.length < MIN_SECRET) problems.push(`ADMIN_SESSION_SECRET must be set (at least ${MIN_SECRET} random characters)`);
-  return { ok: problems.length === 0, problems, password, secret };
+  return { ok: problems.length === 0, problems, username, password, secret };
 }
 
 /** Constant-time comparison (hash both sides so lengths always match). */
@@ -34,8 +37,16 @@ function passwordMatches(given, expected) {
   return crypto.timingSafeEqual(sha256(given), sha256(expected)) && expected.length > 0;
 }
 
+/** Checks username AND password, each in constant time. Both comparisons always run (no early exit),
+ *  so the response time does not reveal which one was wrong. */
+function credentialsMatch(username, password, cfg) {
+  const userOk = passwordMatches(String(username || ''), cfg.username);
+  const passOk = passwordMatches(String(password || ''), cfg.password);
+  return userOk && passOk;
+}
+
 function sign(cfg, exp, nonce) {
-  const fp = b64u(sha256('pw:' + cfg.password)).slice(0, 16);
+  const fp = b64u(sha256('pw:' + cfg.username + '\n' + cfg.password)).slice(0, 16);
   return b64u(hmac(cfg.secret, `v1.${exp}.${nonce}.${fp}`));
 }
 function csrfFor(cfg, nonce) { return b64u(hmac(cfg.secret, 'csrf.' + nonce)); }
@@ -105,6 +116,6 @@ function recordFailure(ip, now) {
 function clearFailures(ip) { attempts.delete(ip); }
 
 module.exports = {
-  config, passwordMatches, issue, verify, csrfOk, cookieHeader, loginBlocked, recordFailure, clearFailures,
+  config, passwordMatches, credentialsMatch, issue, verify, csrfOk, cookieHeader, loginBlocked, recordFailure, clearFailures,
   SESSION_MS, COOKIE, _reset() { attempts.clear(); globalFails = []; },
 };

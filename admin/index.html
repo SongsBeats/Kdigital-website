@@ -19,9 +19,13 @@
     <h1>Website editor</h1>
     <p class="login-sub">K Digital World</p>
     <div class="notice notice--warn" id="login-config" hidden></div>
-    <label class="f-label" for="password">Admin password</label>
+    <label class="f-label" for="username">Username</label>
+    <div class="login-field">
+      <input id="username" name="username" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required maxlength="128" aria-describedby="login-error">
+    </div>
+    <label class="f-label" for="password">Password</label>
     <div class="pw-wrap">
-      <input id="password" name="password" type="password" autocomplete="current-password" required maxlength="256">
+      <input id="password" name="password" type="password" autocomplete="current-password" required maxlength="256" aria-describedby="login-error">
       <button type="button" class="pw-toggle" id="pw-toggle" aria-label="Show password" aria-pressed="false">Show</button>
     </div>
     <p class="f-error" id="login-error" role="alert" hidden></p>

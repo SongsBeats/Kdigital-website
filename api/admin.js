@@ -1,7 +1,7 @@
 /**
  * Admin API (single function, action in the query string):
  *   GET  ?action=session            -> { authenticated, csrf, configured, storage }
- *   POST ?action=login   {password} -> sets the session cookie
+ *   POST ?action=login   {username, password} -> sets the session cookie
  *   POST ?action=logout
  *   GET  ?action=content            -> { content, rev, updatedAt, source, schema }
  *   POST ?action=publish {content, baseRev}
@@ -28,11 +28,14 @@ async function login(req, res, cfg) {
   const wait = auth.loginBlocked(ip, Date.now());
   if (wait) return fail(res, 429, 'rate_limited', `Too many attempts. Try again in ${Math.ceil(wait / 60)} minute(s).`, null, { 'Retry-After': String(wait) });
   const body = await readJson(req, 4096);
+  const username = typeof body.username === 'string' ? body.username.trim().slice(0, 128) : '';
   const password = typeof body.password === 'string' ? body.password.slice(0, 256) : '';
-  if (!password || !auth.passwordMatches(password, cfg.password)) {
+  // Both checks always run; the same generic error is returned whichever one failed.
+  const ok = auth.credentialsMatch(username, password, cfg);
+  if (!username || !password || !ok) {
     auth.recordFailure(ip, Date.now());
     await sleep(400 + Math.floor(Math.random() * 300)); // slows down guessing
-    return fail(res, 401, 'wrong_password', 'That password is not correct.');
+    return fail(res, 401, 'bad_credentials', 'Incorrect username or password');
   }
   auth.clearFailures(ip);
   const s = auth.issue(cfg);

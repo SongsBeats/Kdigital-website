@@ -37,6 +37,8 @@ button,input,select,textarea{font:inherit;color:inherit}
 .login-card h1{text-align:center;font-size:1.5rem;font-weight:800}
 .login-sub{text-align:center;color:var(--muted);margin:2px 0 24px}
 .login-foot{text-align:center;margin:18px 0 0;font-size:.9rem}
+.login-field{margin-bottom:14px}
+.login-card input[aria-invalid="true"]{border-color:var(--danger)}
 .pw-wrap{position:relative;margin-bottom:6px}
 .pw-wrap input{padding-right:72px}
 .pw-toggle{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--link);font-weight:700;font-size:.85rem;padding:8px 10px;cursor:pointer;border-radius:8px}

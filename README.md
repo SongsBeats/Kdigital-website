@@ -37,13 +37,15 @@
 One-time steps in the Vercel dashboard (about 5 minutes):
 1. **Create the storage.** Project → **Storage** → **Create Database** → **Blob** → access **Public** → create, then **Connect** it to this project (Production and Preview). Vercel adds the store credentials to the project automatically; you do not copy any token.
 2. **Add environment variables.** Project → **Settings → Environment Variables** (Production, plus Preview if wanted):
-   - `ADMIN_PASSWORD`: the editor password, at least 10 characters (a long passphrase is best).
+   - `ADMIN_USERNAME`: the editor username, e.g. `admin` (if not set, the username is `admin`).
+   - `ADMIN_PASSWORD`: the editor password, at least 8 characters (longer is safer).
+   Changing either one signs everyone out of the editor.
    - `ADMIN_SESSION_SECRET`: at least 32 random characters, e.g. the output of `openssl rand -hex 32`.
    - `GEMINI_API_KEY`: the Google Gemini key for the chat assistant (optional: `GEMINI_MODEL`, `GEMINI_FALLBACK_MODELS`).
 3. **Deploy** (or **Redeploy** the latest deployment), because new variables and storage only apply to new deployments.
-4. Open `https://<your-domain>/admin`, sign in with `ADMIN_PASSWORD`, and set **Brand & SEO → Website address** to the real domain. Press **Publish changes**.
+4. Open `https://<your-domain>/admin`, sign in with your `ADMIN_USERNAME` and `ADMIN_PASSWORD`, and set **Brand & SEO → Website address** to the real domain. Press **Publish changes**.
 
-Before step 1 the public site still works and shows the built-in content; the editor shows a notice that storage is not connected and cannot publish. Before step 2 the login page explains which variables are missing.
+Before step 1 the public site still works and shows the built-in content; the editor shows a notice that storage is not connected and cannot publish. Before step 2 the login page explains which variables are missing. A wrong username or password always shows the same message ("Incorrect username or password"), so it does not reveal which one was wrong.
 
 ### Using the editor
 - Sections: Brand & SEO (logo, page title, description, social share image, website address), Contact details, Hero & figures (headline, ring icons, stats), Why choose us, About, Services (11, with icons), How we work (steps), Clients (logos and links), FAQ, Footer. Lists can be added to, removed and reordered with the arrows.
@@ -56,11 +58,11 @@ Before step 1 the public site still works and shows the built-in content; the ed
 - `/` is rewritten (vercel.json) to `api/page.js`, which renders the full HTML from the content JSON on the server, so every word, the JSON-LD (ProfessionalService with address, hours and service catalogue, plus FAQPage) and the meta tags are in the HTML at first paint (crawlable, no client-side rendering). `/robots.txt` and `/sitemap.xml` are rendered the same way.
 - The rendered page is cached on Vercel's CDN (`Vercel-CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800`, cache tag `kd-page`); browsers always revalidate. Publishing or restoring purges the `kd-page` tag, so the live site shows changes within seconds while normal visits are served from the CDN.
 - Storage: each publish writes a new immutable JSON file `content/versions/…json` to Vercel Blob (newest sorts first; only the newest 10 are kept). Images go to `uploads/…`. If Blob is not connected or is unreachable, the page falls back to the last good copy, then to the built-in defaults, so the site never breaks.
-- Security: the password is compared in constant time; the session is a signed (HMAC-SHA256 with `ADMIN_SESSION_SECRET`) HttpOnly, Secure, SameSite=Strict cookie valid for 8 hours; every write also needs a CSRF token header, a same-origin request and a JSON body; failed logins are rate limited (5 per 15 minutes and 30 per day per IP, plus a global cap) with a short delay; `/admin` and `/api/admin` send `noindex` and `no-store`, `/admin` has a strict Content-Security-Policy, and robots.txt disallows `/admin` and `/api/`. Content is validated against a schema on the server and everything is HTML-escaped when rendered.
+- Security: the username and the password are both checked, each with a constant-time comparison, and a failure returns one generic message; the session is a signed (HMAC-SHA256 with `ADMIN_SESSION_SECRET`) HttpOnly, Secure, SameSite=Strict cookie valid for 8 hours; every write also needs a CSRF token header, a same-origin request and a JSON body; failed logins (wrong username or wrong password) are rate limited (5 per 15 minutes and 30 per day per IP, plus a global cap) with a short delay; `/admin` and `/api/admin` send `noindex` and `no-store`, `/admin` has a strict Content-Security-Policy, and robots.txt disallows `/admin` and `/api/`. Content is validated against a schema on the server and everything is HTML-escaped when rendered.
 
 ### Limitations
-- The login rate limit is kept in memory per server instance, so it slows guessing but is not a global lockout. Use a long password.
-- Signing out clears the cookie in that browser. To sign out every device at once, change `ADMIN_SESSION_SECRET` (or the password) and redeploy.
+- The login rate limit is kept in memory per server instance, so it slows guessing but is not a global lockout. Use a password that is hard to guess.
+- Signing out clears the cookie in that browser. To sign out every device at once, change `ADMIN_SESSION_SECRET` (or the username or password) and redeploy.
 - Old uploaded images are not deleted automatically when replaced (they are small WebP files). They can be removed in Vercel → Storage → Blob if wanted.
 - One editor at a time is assumed. If two people publish from different tabs, the second one is told to reload instead of overwriting.
 
@@ -68,13 +70,13 @@ Before step 1 the public site still works and shows the built-in content; the ed
 ```bash
 cd site && npm install && cd ..
 # public page + editor with a filesystem Blob mock (stored in /tmp/kd-blob), fake chat replies:
-KD_DEV_BLOB=1 KD_BLOB_DIR=/tmp/kd-blob CHAT_MOCK=1 ADMIN_PASSWORD='choose-a-long-password' \
+KD_DEV_BLOB=1 KD_BLOB_DIR=/tmp/kd-blob CHAT_MOCK=1 ADMIN_USERNAME=admin ADMIN_PASSWORD='choose-a-password' \
   ADMIN_SESSION_SECRET="$(openssl rand -hex 32)" node tools/dev_server.js 8095
 # then open http://localhost:8095/ and http://localhost:8095/admin
 
 node tests/unit.test.js     # schema validation, image checks, renderer escaping, chat prompt builder
-node tests/admin.test.js    # API: login, rate limit, cookies, CSRF, uploads, publish, live page, versions, restore
+node tests/admin.test.js    # API: username + password login, rate limit, cookies, CSRF, uploads, publish, live page, versions, restore
 node tests/chat.test.js     # chat function with a mocked Gemini API
-ADMIN_PASSWORD='same-as-server' BASE=http://localhost:8095 python tools/admin_e2e.py   # browser test + admin screenshots
+ADMIN_USERNAME=admin ADMIN_PASSWORD='same-as-server' BASE=http://localhost:8095 python tools/admin_e2e.py   # browser test + admin screenshots
 ```
 `tools/dev_server.js` mirrors vercel.json (rewrites, redirects, headers) and mounts the three functions. Use `vercel dev` inside `site/` to test against a real Blob store (after `vercel env pull`).
