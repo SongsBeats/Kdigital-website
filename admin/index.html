@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="same-origin">
+<title>Website editor | K Digital World</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="stylesheet" href="/admin/admin.css">
+<script src="/admin/admin.js" defer></script>
+</head>
+<body>
+<noscript><p class="noscript">The website editor needs JavaScript.</p></noscript>
+
+<main id="login" class="login" hidden>
+  <form class="login-card" id="login-form" novalidate>
+    <img class="login-logo" src="/assets/logo-icon@3x.png" alt="" width="82" height="72">
+    <h1>Website editor</h1>
+    <p class="login-sub">K Digital World</p>
+    <div class="notice notice--warn" id="login-config" hidden></div>
+    <label class="f-label" for="password">Admin password</label>
+    <div class="pw-wrap">
+      <input id="password" name="password" type="password" autocomplete="current-password" required maxlength="256">
+      <button type="button" class="pw-toggle" id="pw-toggle" aria-label="Show password" aria-pressed="false">Show</button>
+    </div>
+    <p class="f-error" id="login-error" role="alert" hidden></p>
+    <button class="btn btn-primary btn-block" type="submit" id="login-btn">Sign in</button>
+    <p class="login-foot"><a href="/">Back to the website</a></p>
+  </form>
+</main>
+
+<div id="app" class="app" hidden>
+  <header class="topbar">
+    <div class="topbar-brand">
+      <img src="/assets/logo-icon.png" srcset="/assets/logo-icon.png 2x, /assets/logo-icon@3x.png 3x" alt="" width="40" height="35">
+      <div><strong>Website editor</strong><span class="topbar-status" id="status"></span></div>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-ghost btn-sm" href="/" target="_blank" rel="noopener">View site</a>
+      <button class="btn btn-ghost btn-sm" type="button" id="logout">Sign out</button>
+    </div>
+  </header>
+  <div class="notice notice--warn notice--bar" id="storage-banner" hidden>
+    <strong>Storage is not connected yet.</strong> You can look around, but publishing and image uploads need a Vercel Blob store. See the README, section "Admin setup".
+  </div>
+  <div class="notice notice--info notice--bar" id="draft-banner" hidden></div>
+  <div class="layout">
+    <nav class="sidenav" aria-label="Sections"><ul id="nav"></ul></nav>
+    <section class="main" id="main" aria-live="off" tabindex="-1"></section>
+  </div>
+  <footer class="actionbar">
+    <p class="actionbar-msg" id="dirty-msg">No unpublished changes</p>
+    <div class="actionbar-btns">
+      <button class="btn btn-ghost" type="button" id="discard" disabled>Discard changes</button>
+      <button class="btn btn-primary" type="button" id="publish" disabled>Publish changes</button>
+    </div>
+  </footer>
+</div>
+<div class="toast-wrap" id="toasts" role="status" aria-live="polite"></div>
+</body>
+</html>

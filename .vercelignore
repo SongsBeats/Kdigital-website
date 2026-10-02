@@ -1,0 +1,6 @@
+# Never upload local env files (keys live in Vercel Environment Variables)
+.env
+.env.*
+!.env.example
+node_modules
+README.md

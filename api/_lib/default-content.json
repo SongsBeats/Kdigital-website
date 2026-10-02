@@ -1,0 +1,368 @@
+{
+ "schemaVersion": 1,
+ "brand": {
+  "name": "K Digital World",
+  "shortName": "K Digital",
+  "tagline": "Targeting Success, Delivering Growth",
+  "logo": {
+   "src": "assets/logo-icon.png",
+   "src2x": "assets/logo-icon@3x.png",
+   "w": 110,
+   "h": 96
+  }
+ },
+ "seo": {
+  "siteUrl": "",
+  "title": "Digital Marketing Agency in Khammam | K Digital World",
+  "description": "K Digital World: Targeting Success, Delivering Growth. Digital marketing agency in Khammam for SEO, Google Ads, Meta Ads, social media and websites across Telangana and Andhra Pradesh.",
+  "keywords": "digital marketing agency in Khammam, digital marketing Khammam, SEO Khammam, Google Ads Telangana, Meta Ads, social media marketing Andhra Pradesh, website design Khammam, Google Business Profile, K Digital, K Digital World",
+  "businessDescription": "Full-service digital marketing agency in Khammam, Telangana offering social media marketing, Meta Ads, Google Ads, LinkedIn Ads, YouTube Ads, SEO, Google Business Profile optimization, logo design and branding, analytics setup, AI videos and website design for businesses in Telangana and Andhra Pradesh.",
+  "ogImage": {
+   "src": "assets/og-image.png",
+   "w": 1200,
+   "h": 630
+  },
+  "ogImageAlt": "K Digital World logo with the text Digital Marketing Agency in Khammam"
+ },
+ "contact": {
+  "phoneDisplay": "+91 99123 60547",
+  "phone": "+919912360547",
+  "whatsapp": "919912360547",
+  "whatsappGreeting": "Hello K Digital World, I would like a free consultation.",
+  "email": "kdigitalads9@gmail.com",
+  "location": "Khammam, Telangana",
+  "city": "Khammam",
+  "region": "Telangana",
+  "hours": "Mon to Sat, 10 AM to 7 PM",
+  "opens": "10:00",
+  "closes": "19:00",
+  "days": [
+   "Monday",
+   "Tuesday",
+   "Wednesday",
+   "Thursday",
+   "Friday",
+   "Saturday"
+  ],
+  "areasServed": [
+   "Telangana",
+   "Andhra Pradesh"
+  ]
+ },
+ "hero": {
+  "badge": "Digital Marketing Agency in Khammam, Telangana",
+  "titleStart": "Transforming Clicks Into",
+  "titleHighlight": "Customers",
+  "lead": "Social media, ads, SEO, Google Business Profile, logo design, AI videos and websites, all handled by one team. Get more leads, more calls and more customers.",
+  "ctaLabel": "Get a Free Consultation",
+  "ring": [
+   {
+    "icon": "social",
+    "label": "Social media"
+   },
+   {
+    "icon": "meta",
+    "label": "Meta Ads"
+   },
+   {
+    "icon": "google",
+    "label": "Google Ads"
+   },
+   {
+    "icon": "seo",
+    "label": "SEO"
+   },
+   {
+    "icon": "gbp",
+    "label": "Google Business Profile"
+   },
+   {
+    "icon": "logo",
+    "label": "Logo design"
+   },
+   {
+    "icon": "video",
+    "label": "AI videos"
+   },
+   {
+    "icon": "web",
+    "label": "Websites"
+   }
+  ]
+ },
+ "stats": [
+  {
+   "value": "50+",
+   "label": "Campaigns managed"
+  },
+  {
+   "value": "4+",
+   "label": "Industries served"
+  },
+  {
+   "value": "100%",
+   "label": "Transparent monthly reports"
+  },
+  {
+   "value": "24-hour",
+   "label": "Response time"
+  }
+ ],
+ "why": {
+  "kicker": "Why choose K Digital",
+  "title": "A local partner focused on calls, leads and sales",
+  "lead": "Businesses across Khammam, Telangana and Andhra Pradesh work with us because everything is handled in one place, honestly and affordably.",
+  "items": [
+   {
+    "icon": "why-agency",
+    "title": "One agency, every service",
+    "text": "No need to hire five different vendors."
+   },
+   {
+    "icon": "why-local",
+    "title": "Local market understanding",
+    "text": "We know how customers in Andhra Pradesh and Telangana search and buy."
+   },
+   {
+    "icon": "why-results",
+    "title": "Results, not vanity metrics",
+    "text": "We track calls, leads and sales, not just likes."
+   },
+   {
+    "icon": "why-reports",
+    "title": "Transparent reporting",
+    "text": "You see where every rupee of your ad budget goes."
+   },
+   {
+    "icon": "why-price",
+    "title": "Affordable packages",
+    "text": "Plans that suit small and growing businesses."
+   }
+  ]
+ },
+ "about": {
+  "kicker": "About K Digital World",
+  "title": "A full-service digital marketing agency in Khammam",
+  "paragraphs": [
+   "K Digital is a full-service digital marketing agency that helps local businesses and growing brands get found online, build trust and turn attention into customers.",
+   "From your logo and first Instagram post to your Google ads, SEO and website, we build a complete online presence that works for you every day."
+  ],
+  "cards": [
+   {
+    "icon": "about-mission",
+    "title": "Our Mission",
+    "text": "To make professional digital marketing simple and affordable for every business."
+   },
+   {
+    "icon": "about-promise",
+    "title": "Our Promise",
+    "text": "Honest strategy, creative content and measurable results."
+   }
+  ]
+ },
+ "services": {
+  "title": "Digital marketing services that bring real enquiries",
+  "lead": "Eleven services, one accountable team. From social media and paid ads to SEO, branding and websites for businesses in Telangana and Andhra Pradesh.",
+  "items": [
+   {
+    "icon": "social",
+    "name": "Social Media Marketing",
+    "text": "Content planning, posts, reels and stories, and community management for Instagram and Facebook. We build your brand voice and keep your page active and attractive."
+   },
+   {
+    "icon": "meta",
+    "name": "Meta Ads (Facebook and Instagram)",
+    "text": "Targeted ad campaigns for leads, calls, WhatsApp messages and sales, with regular optimization to lower your cost per lead."
+   },
+   {
+    "icon": "google",
+    "name": "Google Ads",
+    "text": "Show up when customers search “near me” or for your service. Search, display and local campaigns designed for enquiries."
+   },
+   {
+    "icon": "linkedin",
+    "name": "LinkedIn Ads",
+    "text": "B2B lead generation for IT companies, consultants and service providers who want to reach decision makers."
+   },
+   {
+    "icon": "youtube",
+    "name": "YouTube Ads",
+    "text": "Video advertising that builds awareness and brings targeted viewers to your business."
+   },
+   {
+    "icon": "seo",
+    "name": "SEO (Search Engine Optimization)",
+    "text": "Get your website to rank on the first page of Google. Keyword research, on-page SEO, local SEO, technical fixes, blog content and backlinks, for steady free traffic month after month."
+   },
+   {
+    "icon": "logo",
+    "name": "Logo Designing and Branding",
+    "text": "A professional logo that represents your business. Logo design, colour palette, fonts, business card and social media profile kit, so your brand looks consistent everywhere."
+   },
+   {
+    "icon": "analytics",
+    "name": "Google Analytics and Tracking Setup",
+    "text": "Know exactly where your customers come from. We set up Google Analytics 4, Search Console, Meta Pixel and conversion tracking, and give you easy monthly reports on visitors, calls, leads and ad results."
+   },
+   {
+    "icon": "gbp",
+    "name": "Google Business Profile (GMB) Creation and Optimization",
+    "text": "Set up, verification, keyword-rich description, photos, services, posts and review management, so you rank in local search and Google Maps."
+   },
+   {
+    "icon": "video",
+    "name": "AI Videos",
+    "text": "Product ads, promo reels, explainer videos and brand videos created with AI, delivered faster and at lower cost than traditional shoots."
+   },
+   {
+    "icon": "web",
+    "name": "Website Designing",
+    "text": "Fast, mobile-friendly, SEO-ready websites with WhatsApp and call buttons, built to convert visitors into customers."
+   }
+  ],
+  "ctaTitle": "Not sure where to start?",
+  "ctaText": "Tell us about your business and we will suggest the right mix of channels for your goals and budget.",
+  "ctaButton": "Get a Free Consultation"
+ },
+ "process": {
+  "kicker": "How we work",
+  "title": "A simple five-step process",
+  "lead": "Clear steps, clear ownership and a monthly report you can actually read.",
+  "steps": [
+   {
+    "icon": "step-discover",
+    "title": "Discover",
+    "text": "We understand your business, customers and goals."
+   },
+   {
+    "icon": "step-strategy",
+    "title": "Strategy",
+    "text": "We plan the channels, budget and content calendar."
+   },
+   {
+    "icon": "step-create",
+    "title": "Create",
+    "text": "Designs, videos, ads and website copy."
+   },
+   {
+    "icon": "step-launch",
+    "title": "Launch",
+    "text": "Campaigns go live."
+   },
+   {
+    "icon": "step-optimize",
+    "title": "Optimize and Report",
+    "text": "Monthly performance reports with clear next steps."
+   }
+  ]
+ },
+ "clients": {
+  "title": "Businesses that trust K Digital",
+  "lead": "From IT software and pest control to fashion, safety nets and furniture, we help businesses grow their audience and enquiries online.",
+  "items": [
+   {
+    "name": "vgrow.ai",
+    "industry": "IT Software",
+    "detail": "IT software company",
+    "logo": {
+     "src": "assets/logos/vgrow.webp",
+     "w": 150,
+     "h": 37
+    },
+    "link": "https://www.instagram.com/vgrow.ai",
+    "wordmark1": "",
+    "wordmark2": ""
+   },
+   {
+    "name": "Star Pest Control",
+    "industry": "Pest Control",
+    "detail": "Pest control, termite and bed bug treatment",
+    "logo": {
+     "src": "assets/logos/star-pest-control.webp",
+     "w": 174,
+     "h": 56
+    },
+    "link": "https://www.instagram.com/starpestcontrol_",
+    "wordmark1": "",
+    "wordmark2": ""
+   },
+   {
+    "name": "Chennai Pigeon Nets",
+    "industry": "Safety Nets",
+    "detail": "Pigeon nets, balcony and children safety nets, building and industrial nets",
+    "logo": {
+     "src": "assets/logos/chennai-pigeon-nets.webp",
+     "w": 160,
+     "h": 59
+    },
+    "link": "https://www.instagram.com/chennai_pigeon_nets88/",
+    "wordmark1": "",
+    "wordmark2": ""
+   },
+   {
+    "name": "Moni Sahasra Collections",
+    "industry": "Fashion",
+    "detail": "Trendy tops, traditional sarees, ladies wear and kids wear",
+    "logo": {
+     "src": "assets/logos/moni-sahasra.webp",
+     "w": 83,
+     "h": 80
+    },
+    "link": "https://www.instagram.com/monisahasra_collections",
+    "wordmark1": "",
+    "wordmark2": ""
+   },
+   {
+    "name": "Andhra Plywood and Furniture",
+    "industry": "Furniture",
+    "detail": "Plywood, furniture and cupboard works",
+    "logo": null,
+    "link": "",
+    "wordmark1": "Andhra Plywood",
+    "wordmark2": "& Furniture"
+   }
+  ]
+ },
+ "faq": {
+  "title": "Frequently asked questions",
+  "lead": "Still have a question? Call or WhatsApp us on {phone}. We respond within 24 hours.",
+  "items": [
+   {
+    "q": "How soon will I see results?",
+    "a": "Ads can bring leads within days. Social media, SEO and GMB growth usually show clear results in 30 to 90 days."
+   },
+   {
+    "q": "Do you work with small businesses?",
+    "a": "Yes. We have packages for local shops, service providers and companies."
+   },
+   {
+    "q": "Do I need to pay separately for ads?",
+    "a": "Yes. The ad budget is paid directly to Meta or Google, and our management fee is separate. This keeps everything transparent."
+   },
+   {
+    "q": "Can you create videos without a shoot?",
+    "a": "Yes. Our AI videos use your product images and brand details."
+   },
+   {
+    "q": "Can you design my logo and set up my whole brand?",
+    "a": "Yes. We create your logo, colours, fonts and social media profile kit."
+   },
+   {
+    "q": "How do I know my marketing is working?",
+    "a": "We set up Google Analytics and conversion tracking, and send you a simple report every month."
+   },
+   {
+    "q": "Will I get reports?",
+    "a": "Yes, every month, in simple language."
+   }
+  ]
+ },
+ "contactSection": {
+  "kicker": "Contact",
+  "title": "Book your free consultation",
+  "lead": "Tell us about your business and goals. We will reply on WhatsApp or by phone with a clear plan."
+ },
+ "footer": {
+  "about": "Digital marketing agency in Khammam, Telangana, helping businesses across Telangana and Andhra Pradesh get more leads, calls and customers."
+ }
+}
