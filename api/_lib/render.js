@@ -57,8 +57,10 @@ function logoImg(c, h, srcsetMode, extra = '') {
   return `<img${extra} src="${e(L.src)}"${srcset} alt="" width="${d.w}" height="${d.h}" decoding="async">`;
 }
 
-function brandLink(c, cls = 'brand') {
-  return `<a class="${cls}" href="#home" aria-label="${e(c.brand.name)}, back to top">${logoImg(c, 44, 'std', ' class="brand-icon"')}<span class="brand-name">${e(c.brand.name)}</span></a>`;
+function brandLink(c, cls = 'brand', withTagline = false) {
+  const name = `<span class="brand-name">${e(c.brand.name)}</span>`;
+  const text = withTagline && c.brand.tagline ? `<span class="brand-text">${name}<span class="brand-tagline">${e(c.brand.tagline)}</span></span>` : name;
+  return `<a class="${cls}" href="#home" aria-label="${e(c.brand.name)}, back to top">${logoImg(c, 44, 'std', ' class="brand-icon"')}${text}</a>`;
 }
 
 function tile(icon, cls, px, lazy = true) {
@@ -242,7 +244,7 @@ ${jsonld(c, x)}
 
 <header class="site-header" id="top">
   <div class="container header-inner">
-    ${brandLink(c)}
+    ${brandLink(c, 'brand', true)}
     <nav class="nav" id="site-nav" aria-label="Main">
       <ul class="nav-list">${nav}</ul>
       <a class="btn btn-primary btn-sm nav-cta" href="#contact">${e(c.hero.ctaLabel)}</a>
