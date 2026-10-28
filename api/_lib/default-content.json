@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
  "brand": {
-  "name": "K Digital World",
+  "name": "K Digital",
   "shortName": "K Digital",
   "tagline": "Targeting Success, Delivering Growth",
   "logo": {
@@ -13,22 +13,22 @@
  },
  "seo": {
   "siteUrl": "",
-  "title": "Digital Marketing Agency in Khammam | K Digital World",
-  "description": "K Digital World: Targeting Success, Delivering Growth. Digital marketing agency in Khammam for SEO, Google Ads, Meta Ads, social media and websites across Telangana and Andhra Pradesh.",
-  "keywords": "digital marketing agency in Khammam, digital marketing Khammam, SEO Khammam, Google Ads Telangana, Meta Ads, social media marketing Andhra Pradesh, website design Khammam, Google Business Profile, K Digital, K Digital World",
+  "title": "Digital Marketing Agency in Khammam | K Digital",
+  "description": "K Digital: Targeting Success, Delivering Growth. Digital marketing agency in Khammam for SEO, Google Ads, Meta Ads, social media and websites across Telangana and Andhra Pradesh.",
+  "keywords": "digital marketing agency in Khammam, digital marketing Khammam, SEO Khammam, Google Ads Telangana, Meta Ads, social media marketing Andhra Pradesh, website design Khammam, Google Business Profile, K Digital",
   "businessDescription": "Full-service digital marketing agency in Khammam, Telangana offering social media marketing, Meta Ads, Google Ads, LinkedIn Ads, YouTube Ads, SEO, Google Business Profile optimization, logo design and branding, analytics setup, AI videos and website design for businesses in Telangana and Andhra Pradesh.",
   "ogImage": {
    "src": "assets/og-image.png",
    "w": 1200,
    "h": 630
   },
-  "ogImageAlt": "K Digital World logo with the text Digital Marketing Agency in Khammam"
+  "ogImageAlt": "K Digital logo with the text Digital Marketing Agency in Khammam"
  },
  "contact": {
   "phoneDisplay": "+91 99123 60547",
   "phone": "+919912360547",
   "whatsapp": "919912360547",
-  "whatsappGreeting": "Hello K Digital World, I would like a free consultation.",
+  "whatsappGreeting": "Hello K Digital, I would like a free consultation.",
   "email": "kdigitalads9@gmail.com",
   "location": "Khammam, Telangana",
   "city": "Khammam",
@@ -141,7 +141,7 @@
   ]
  },
  "about": {
-  "kicker": "About K Digital World",
+  "kicker": "About K Digital",
   "title": "A full-service digital marketing agency in Khammam",
   "paragraphs": [
    "K Digital is a full-service digital marketing agency that helps local businesses and growing brands get found online, build trust and turn attention into customers.",

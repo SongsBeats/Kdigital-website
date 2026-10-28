@@ -1,4 +1,4 @@
-/* K Digital World website editor. On-brand, no dependencies. */
+/* K Digital website editor. On-brand, no dependencies. */
 @font-face{font-family:"Plus Jakarta Sans";src:url(/assets/fonts/plus-jakarta-sans-latin-var.woff2) format("woff2");font-weight:200 800;font-display:swap}
 :root{--navy:#114979;--navy-deep:#0B2E4F;--ink:#0F1B2D;--muted:#5B6B82;--line:#E3E8F1;--soft:#F5F7FC;--blue:#2B78D2;--link:#1F64B5;--purple:#7B4FE0;
   --grad:linear-gradient(120deg,#2B78D2,#7B4FE0);--danger:#C62A47;--ok:#137A4B;--warn-bg:#FFF6E5;--warn-line:#F2C46D;

@@ -1,4 +1,4 @@
-/* K Digital World: small progressive enhancements, no dependencies. */
+/* K Digital: small progressive enhancements, no dependencies. */
 (function () {
   'use strict';
   // Contact details come from the page (rendered from the admin-edited content); values below are fallbacks.
@@ -6,7 +6,7 @@
   try { CFG = JSON.parse((document.getElementById('kd-config') || {}).textContent || '{}'); } catch (e) { CFG = {}; }
   var WA_NUMBER = CFG.whatsapp || '919912360547';
   var EMAIL = CFG.email || 'kdigitalads9@gmail.com';
-  var GREETING = CFG.greeting || 'Hello K Digital World, I would like a free consultation.';
+  var GREETING = CFG.greeting || 'Hello K Digital, I would like a free consultation.';
 
   // Sticky header shadow
   var header = document.querySelector('.site-header');

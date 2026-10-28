@@ -1,5 +1,5 @@
 /**
- * K Digital World website assistant: Vercel serverless function (Node.js, CommonJS).
+ * K Digital website assistant: Vercel serverless function (Node.js, CommonJS).
  *
  *   POST /api/chat   body: { "messages": [ { "role": "user" | "assistant", "content": "..." }, ... ] }
  *   200 -> { "reply": "..." }        4xx/5xx -> { "error": "<code>", "message": "<friendly text>" }
@@ -259,7 +259,7 @@ module.exports = async function handler(req, res) {
     let originHost = '';
     try { originHost = new URL(origin).host; } catch (_) { originHost = ''; }
     if (originHost !== String(host).split(',')[0].trim()) {
-      return fail(res, 403, 'forbidden', 'This chat only works on the K Digital World website.');
+      return fail(res, 403, 'forbidden', 'This chat only works on the K Digital website.');
     }
   }
 

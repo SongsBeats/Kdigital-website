@@ -1,4 +1,4 @@
-/* K Digital World: AI chat assistant widget (lazy-loaded by main.js). No dependencies.
+/* K Digital: AI chat assistant widget (lazy-loaded by main.js). No dependencies.
    Talks to /api/chat (Vercel serverless function holding the Gemini key). Never put API keys in this file. */
 (function () {
   'use strict';

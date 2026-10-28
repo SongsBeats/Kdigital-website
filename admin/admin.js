@@ -1,4 +1,4 @@
-/* K Digital World website editor (vanilla JS, no dependencies).
+/* K Digital website editor (vanilla JS, no dependencies).
    Talks to /api/admin. Forms are generated from the schema the server sends, so the editor and the
    server-side validation always agree. Images are resized and converted to WebP in the browser. */
 (function () {

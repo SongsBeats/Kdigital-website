@@ -1,8 +1,8 @@
 {
-  "name": "kdigital-world-site",
+  "name": "kdigital-site",
   "version": "2.0.0",
   "private": true,
-  "description": "K Digital World website: static assets + Vercel Functions (page renderer, admin editor, Gemini chat assistant).",
+  "description": "K Digital website: static assets + Vercel Functions (page renderer, admin editor, Gemini chat assistant).",
   "license": "UNLICENSED",
   "engines": {
     "node": ">=20"

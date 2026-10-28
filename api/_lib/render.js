@@ -1,5 +1,5 @@
 /**
- * Renders the public K Digital World page (and robots.txt / sitemap.xml) from the content JSON.
+ * Renders the public K Digital page (and robots.txt / sitemap.xml) from the content JSON.
  * Pure function of (content, options): used by api/page.js on Vercel and by the local dev server / tests.
  * All content strings are HTML-escaped here; the content never contains HTML.
  */
